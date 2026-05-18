@@ -1,0 +1,23 @@
+.filters-card {
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .filters-form {
+    margin-top: 1rem;
+  }
+  
+  .filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .filters-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

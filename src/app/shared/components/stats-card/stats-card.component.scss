@@ -1,0 +1,42 @@
+.stats-card {
+  height: 100%;
+  
+  .stats-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .stats-info {
+    flex: 1;
+  }
+  
+  .stats-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .stats-value {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  
+  .stats-subtitle {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+  
+  .stats-icon {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    opacity: 0.2;
+  }
+}

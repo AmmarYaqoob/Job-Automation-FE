@@ -1,0 +1,42 @@
+.recent-jobs-table {
+  width: 100%;
+  
+  .job-link {
+    color: #1976d2;
+    cursor: pointer;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .ats-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    
+    &.primary {
+      background-color: #4caf50;
+      color: white;
+    }
+    
+    &.accent {
+      background-color: #ff9800;
+      color: white;
+    }
+    
+    &.warn {
+      background-color: #f44336;
+      color: white;
+    }
+  }
+  
+  .job-row {
+    cursor: pointer;
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+}

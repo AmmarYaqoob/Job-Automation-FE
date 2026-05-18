@@ -1,0 +1,90 @@
+<div class="cv-container">
+  <app-page-header 
+    title="CV Management" 
+    subtitle="Upload and manage your CV">
+  </app-page-header>
+
+  <div class="cv-content">
+    <!-- Upload Section -->
+    <mat-card class="upload-card">
+      <mat-card-header>
+        <mat-card-title>Upload CV</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="upload-section">
+          <input 
+            type="file" 
+            accept=".docx,.doc,.pdf"
+            (change)="onFileSelected($event)"
+            id="cv-upload"
+            style="display: none;">
+          <label for="cv-upload">
+            <button mat-raised-button color="primary" [disabled]="uploading" component="span">
+              <mat-icon>upload</mat-icon>
+              {{ uploading ? 'Uploading...' : 'Choose CV File' }}
+            </button>
+          </label>
+          <p class="upload-hint">Upload your CV in .docx, .doc, or .pdf format</p>
+          <div *ngIf="uploading" class="upload-progress">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            <p class="upload-status">Uploading file to server...</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- CV Details -->
+    <div *ngIf="loading" class="loading-wrapper">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <div *ngIf="!loading && cv" class="cv-details">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>CV Information</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="cv-info">
+            <p><strong>File Name:</strong> {{ cv.fileName }}</p>
+            <p><strong>Upload Date:</strong> {{ cv.uploadDate | dateFormat }}</p>
+            <p><strong>Version:</strong> {{ cv.version }}</p>
+            <p *ngIf="cv.optimizedForJobId"><strong>Optimized For Job:</strong> {{ cv.optimizedForJobId }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- CV Sections -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>CV Sections</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let section of cv.sections">
+              <mat-expansion-panel-header>
+                <mat-panel-title>{{ section.type }}</mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="section-content">{{ section.content }}</div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Skills -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Skills</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="skills-list">
+            <mat-chip *ngFor="let skill of cv.skills">{{ skill }}</mat-chip>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="!loading && !cv" class="no-cv">
+      <p>No CV uploaded yet. Please upload your CV to get started.</p>
+    </div>
+  </div>
+</div>

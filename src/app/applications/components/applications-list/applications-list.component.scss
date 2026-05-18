@@ -1,0 +1,32 @@
+.applications-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.applications-content {
+  .applications-table {
+    width: 100%;
+    
+    .notes-text {
+      max-width: 200px;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  
+  .no-applications {
+    text-align: center;
+    padding: 3rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}

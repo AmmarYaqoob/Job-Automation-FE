@@ -1,0 +1,190 @@
+<div class="settings-container">
+  <div class="section-header">
+    <app-page-header title="Settings"
+      subtitle="Configure your job search preferences and system settings"></app-page-header>
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon>save</mat-icon>
+      Save Settings
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading-wrapper">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <!-- <div class="grid grid-cols-4 gap-4  s">
+    <div class="bg-gray-200 p-4">1</div>
+    <div class="bg-gray-200 p-4">2</div>
+    <div class="bg-gray-200 p-4">3</div>
+    <div class="bg-gray-200 p-4">4</div>
+  </div> -->
+
+  <div *ngIf="!loading" class="settings-content">
+    <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
+      <!-- Job Search Settings -->
+      <mat-card class="settings-section">
+        <!-- <mat-card-header>
+          <mat-card-title>Location Keyword</mat-card-title>
+        </mat-card-header> -->
+        <!-- <button mat-icon-button type="button" (click)="removeLocationKeyword(0)">
+          <mat-icon>delete</mat-icon>
+        </button> -->
+        <mat-card-content>
+          <div formGroupName="jobSearch" class="form-section">
+            <!-- <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Location</mat-label>
+              <input matInput formControlName="location">
+            </mat-form-field> -->
+
+            <div class="form-array-section">
+              <div class="section-header">
+                <mat-card-title>Countries</mat-card-title>
+                <button mat-raised-button color="primary" type="button" (click)="addLocationKeyword()">
+                  <mat-icon>add</mat-icon>
+                  Add
+                </button>
+              </div>
+
+              <div formArrayName="locationKeywords">
+                <div *ngFor="let group of locationKeywords.controls; let i = index" [formGroupName]="i"
+                  class="array-item">
+
+                  <mat-form-field appearance="outline">
+                    <input matInput formControlName="country" placeholder="Enter country">
+                  </mat-form-field>
+
+                  <button mat-icon-button type="button" (click)="removeLocationKeyword(i)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-array-section">
+              <div class="section-header">
+                <mat-card-title>Roles</mat-card-title>
+                <button mat-raised-button color="primary" type="button" (click)="addRoleKeyword()">
+                  <mat-icon>add</mat-icon>
+                  Add
+                </button>
+              </div>
+              <div formArrayName="roleKeywords" *ngFor="let keyword of roleKeywords.controls; let i = index"
+                class="array-item">
+                <mat-form-field appearance="outline">
+                  <input matInput [formControlName]="i" placeholder="Enter keyword">
+                </mat-form-field>
+                <button mat-icon-button type="button" (click)="removeRoleKeyword(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-array-section">
+              <div class="section-header">
+                <mat-card-title>Platforms</mat-card-title>
+                <button mat-raised-button color="primary" type="button" (click)="addPlatform()">
+                  <mat-icon>add</mat-icon>
+                  Add
+                </button>
+              </div>
+              <div formArrayName="platforms" *ngFor="let platform of platforms.controls; let i = index"
+                class="array-item">
+                <mat-form-field appearance="outline">
+                  <input matInput [formControlName]="i" placeholder="Enter platform">
+                </mat-form-field>
+                <button mat-icon-button type="button" (click)="removePlatform(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Date Range</mat-label>
+              <mat-select formControlName="dateRange">
+                <mat-option *ngFor="let range of dateRanges" [value]="range">
+                  {{ range }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- ATS Settings -->
+      <mat-card class="settings-section">
+        <mat-card-header>
+          <mat-card-title>ATS Thresholds</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div formGroupName="ats" class="form-section">
+            <mat-form-field appearance="outline">
+              <mat-label>Low Threshold</mat-label>
+              <input matInput type="number" formControlName="lowThreshold" min="0" max="100">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Medium Threshold</mat-label>
+              <input matInput type="number" formControlName="mediumThreshold" min="0" max="100">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>High Threshold</mat-label>
+              <input matInput type="number" formControlName="highThreshold" min="0" max="100">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- <mat-card class="settings-section">
+        <mat-card-header>
+          <mat-card-title>File Paths</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div formGroupName="filePaths" class="form-section">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>CV Upload Path</mat-label>
+              <input matInput formControlName="cvUploadPath">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>CV Download Path</mat-label>
+              <input matInput formControlName="cvDownloadPath">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Excel Export Path</mat-label>
+              <input matInput formControlName="excelExportPath">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="settings-section">
+        <mat-card-header>
+          <mat-card-title>API Endpoints</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div formGroupName="api" class="form-section">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Base URL</mat-label>
+              <input matInput formControlName="baseUrl">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Jobs Endpoint</mat-label>
+              <input matInput formControlName="jobsEndpoint">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Applications Endpoint</mat-label>
+              <input matInput formControlName="applicationsEndpoint">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>CV Endpoint</mat-label>
+              <input matInput formControlName="cvEndpoint">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Automation Endpoint</mat-label>
+              <input matInput formControlName="automationEndpoint">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card> -->
+
+    </form>
+  </div>
+</div>

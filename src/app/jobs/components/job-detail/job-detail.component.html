@@ -1,0 +1,149 @@
+<div class="job-detail-container">
+  <div *ngIf="loading" class="loading-wrapper">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div *ngIf="!loading && job" class="job-detail-content">
+    <!-- Header -->
+    <div class="job-header">
+      <button mat-icon-button (click)="goBack()" class="back-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="job-title-section">
+        <h1>{{ job.title }}</h1>
+        <p class="company-location">{{ job.company }} • {{ job.location }}</p>
+        <div class="job-meta">
+          <mat-chip>{{ job.platform }}</mat-chip>
+          <span [class]="'ats-badge ' + (job.atsScore | atsScoreColor)">
+            ATS Score: {{ job.atsScore }}
+          </span>
+          <span class="keywords-match">Keywords Match: {{ job.keywordsMatch }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="job-actions">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="optimizeCV()"
+        [disabled]="optimizing">
+        <mat-icon>auto_fix_high</mat-icon>
+        {{ optimizing ? 'Optimizing...' : 'Optimize CV for this job' }}
+      </button>
+      <button 
+        mat-raised-button 
+        [color]="job.applied ? 'accent' : 'primary'"
+        (click)="markAsApplied()">
+        <mat-icon>{{ job.applied ? 'check_circle' : 'send' }}</mat-icon>
+        {{ job.applied ? 'Applied' : 'Mark as Applied' }}
+      </button>
+      <button mat-raised-button (click)="openJobLink()">
+        <mat-icon>open_in_new</mat-icon>
+        Open Job Link
+      </button>
+      <button 
+        mat-raised-button 
+        *ngIf="job.applied"
+        (click)="downloadOptimizedCV()">
+        <mat-icon>download</mat-icon>
+        Download Optimized CV
+      </button>
+    </div>
+
+    <!-- ATS Breakdown -->
+    <mat-card *ngIf="job.atsBreakdown" class="ats-breakdown-card">
+      <mat-card-header>
+        <mat-card-title>ATS Score Breakdown</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="ats-breakdown">
+          <div class="breakdown-item">
+            <span class="breakdown-label">Skills</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="job.atsBreakdown.skills"
+              color="primary">
+            </mat-progress-bar>
+            <span class="breakdown-value">{{ job.atsBreakdown.skills }}%</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="breakdown-label">Experience</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="job.atsBreakdown.experience"
+              color="primary">
+            </mat-progress-bar>
+            <span class="breakdown-value">{{ job.atsBreakdown.experience }}%</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="breakdown-label">Education</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="job.atsBreakdown.education"
+              color="primary">
+            </mat-progress-bar>
+            <span class="breakdown-value">{{ job.atsBreakdown.education }}%</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="breakdown-label">Keywords</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="job.atsBreakdown.keywords"
+              color="primary">
+            </mat-progress-bar>
+            <span class="breakdown-value">{{ job.atsBreakdown.keywords }}%</span>
+          </div>
+          <div class="breakdown-item">
+            <span class="breakdown-label">Formatting</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="job.atsBreakdown.formatting"
+              color="primary">
+            </mat-progress-bar>
+            <span class="breakdown-value">{{ job.atsBreakdown.formatting }}%</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Keywords -->
+    <div class="keywords-section">
+      <mat-card class="keywords-card">
+        <mat-card-header>
+          <mat-card-title>Extracted Keywords</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="keywords-list" *ngIf="job.extractedKeywords && job.extractedKeywords.length > 0">
+            <mat-chip *ngFor="let keyword of job.extractedKeywords">{{ keyword }}</mat-chip>
+          </div>
+          <p *ngIf="!job.extractedKeywords || job.extractedKeywords.length === 0">
+            No keywords extracted yet.
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="keywords-card" *ngIf="job.missingKeywords && job.missingKeywords.length > 0">
+        <mat-card-header>
+          <mat-card-title>Missing Keywords from CV</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="keywords-list">
+            <mat-chip *ngFor="let keyword of job.missingKeywords" color="warn">{{ keyword }}</mat-chip>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Job Description -->
+    <mat-card class="description-card">
+      <mat-card-header>
+        <mat-card-title>Job Description</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="job-description" [innerHTML]="job.description || 'No description available.'"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

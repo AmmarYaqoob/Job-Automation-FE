@@ -1,0 +1,148 @@
+.job-detail-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.job-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.job-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  
+  .back-button {
+    margin-top: 0.5rem;
+  }
+  
+  .job-title-section {
+    flex: 1;
+    
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin: 0 0 0.5rem 0;
+    }
+    
+    .company-location {
+      font-size: 1.125rem;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 1rem 0;
+    }
+    
+    .job-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      
+      .ats-badge {
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 500;
+        
+        &.primary {
+          background-color: #4caf50;
+          color: white;
+        }
+        
+        &.accent {
+          background-color: #ff9800;
+          color: white;
+        }
+        
+        &.warn {
+          background-color: #f44336;
+          color: white;
+        }
+      }
+      
+      .keywords-match {
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+}
+
+.job-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  
+  button {
+    mat-icon {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.ats-breakdown-card {
+  mat-card-content {
+    padding-top: 1rem;
+  }
+  
+  .ats-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    .breakdown-item {
+      display: grid;
+      grid-template-columns: 120px 1fr 60px;
+      gap: 1rem;
+      align-items: center;
+      
+      .breakdown-label {
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.6);
+      }
+      
+      .breakdown-value {
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.keywords-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  
+  .keywords-card {
+    mat-card-content {
+      padding-top: 1rem;
+    }
+    
+    .keywords-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.description-card {
+  mat-card-content {
+    padding-top: 1rem;
+  }
+  
+  .job-description {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}

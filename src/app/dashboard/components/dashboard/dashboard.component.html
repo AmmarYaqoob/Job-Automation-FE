@@ -1,0 +1,116 @@
+<div class="dashboard-container">
+  <app-page-header 
+    title="Dashboard" 
+    subtitle="Overview of your job search activity">
+  </app-page-header>
+
+  <div *ngIf="loading" class="loading-wrapper">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div *ngIf="!loading && stats" class="dashboard-content">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <app-stats-card
+        title="Today"
+        [value]="stats.today.count"
+        [subtitle]="'Applied: ' + stats.today.applied"
+        icon="today"
+        color="primary">
+      </app-stats-card>
+
+      <app-stats-card
+        title="Last 7 Days"
+        [value]="stats.last7Days.count"
+        [subtitle]="'Applied: ' + stats.last7Days.applied"
+        icon="date_range"
+        color="primary">
+      </app-stats-card>
+
+      <app-stats-card
+        title="Total Jobs"
+        [value]="stats.total.count"
+        [subtitle]="'Applied: ' + stats.total.applied + ' | Not Applied: ' + stats.total.notApplied"
+        icon="work"
+        color="primary">
+      </app-stats-card>
+
+      <app-stats-card
+        title="Applied vs Not Applied"
+        [value]="stats.appliedVsNotApplied.applied + ' / ' + stats.appliedVsNotApplied.notApplied"
+        subtitle="Applied / Not Applied"
+        icon="check_circle"
+        color="accent">
+      </app-stats-card>
+    </div>
+
+    <!-- ATS Distribution -->
+    <mat-card class="ats-card">
+      <mat-card-header>
+        <mat-card-title>ATS Score Distribution</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="ats-distribution">
+          <div class="ats-item">
+            <span class="ats-label">Low (&lt; 50)</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="(stats.atsDistribution.low / (stats.atsDistribution.low + stats.atsDistribution.medium + stats.atsDistribution.high)) * 100"
+              color="warn">
+            </mat-progress-bar>
+            <span class="ats-value">{{ stats.atsDistribution.low }}</span>
+          </div>
+          <div class="ats-item">
+            <span class="ats-label">Medium (50-70)</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="(stats.atsDistribution.medium / (stats.atsDistribution.low + stats.atsDistribution.medium + stats.atsDistribution.high)) * 100"
+              color="accent">
+            </mat-progress-bar>
+            <span class="ats-value">{{ stats.atsDistribution.medium }}</span>
+          </div>
+          <div class="ats-item">
+            <span class="ats-label">High (&gt; 70)</span>
+            <mat-progress-bar 
+              mode="determinate" 
+              [value]="(stats.atsDistribution.high / (stats.atsDistribution.low + stats.atsDistribution.medium + stats.atsDistribution.high)) * 100"
+              color="primary">
+            </mat-progress-bar>
+            <span class="ats-value">{{ stats.atsDistribution.high }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Automation Health -->
+    <mat-card class="automation-card">
+      <mat-card-header>
+        <mat-card-title>Automation Health</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="automation-info">
+          <div class="automation-item">
+            <mat-icon [color]="stats.automationHealth.status === 'Healthy' ? 'primary' : 'warn'">
+              {{ stats.automationHealth.status === 'Healthy' ? 'check_circle' : 'warning' }}
+            </mat-icon>
+            <div>
+              <p class="automation-label">Status: {{ stats.automationHealth.status }}</p>
+              <p class="automation-value">Last Run: {{ stats.automationHealth.lastRun | dateFormat }}</p>
+              <p class="automation-value">Failures: {{ stats.automationHealth.failures }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Recent Jobs -->
+    <mat-card class="recent-jobs-card">
+      <mat-card-header>
+        <mat-card-title>Recent Jobs</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-recent-jobs-table [jobs]="stats.recentJobs"></app-recent-jobs-table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

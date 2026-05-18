@@ -1,0 +1,103 @@
+<div class="automation-container">
+  <app-page-header 
+    title="Automation Control" 
+    subtitle="Manage your automation workflows and settings">
+  </app-page-header>
+
+  <div *ngIf="loading" class="loading-wrapper">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+  <div *ngIf="!loading" class="automation-content">
+    <!-- Workflows -->
+    <mat-card class="workflows-card">
+      <mat-card-header>
+        <mat-card-title>Workflows</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="workflows-list">
+          <div *ngFor="let workflow of workflows" class="workflow-item">
+            <div class="workflow-info">
+              <h3>{{ workflow.name }}</h3>
+              <div class="workflow-meta">
+                <mat-chip [color]="getStatusColor(workflow.status)">
+                  {{ workflow.status }}
+                </mat-chip>
+                <span *ngIf="workflow.lastRun">
+                  Last Run: {{ workflow.lastRun | dateFormat }}
+                </span>
+                <span *ngIf="workflow.failures > 0" class="failures">
+                  Failures: {{ workflow.failures }}
+                </span>
+              </div>
+            </div>
+            <div class="workflow-actions">
+              <button 
+                mat-raised-button 
+                color="primary"
+                (click)="runWorkflow(workflow.id)"
+                [disabled]="!workflow.enabled">
+                <mat-icon>play_arrow</mat-icon>
+                Run Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Settings -->
+    <mat-card class="settings-card">
+      <mat-card-header>
+        <mat-card-title>Automation Settings</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="settings-list">
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>Job Scraping</h4>
+              <p>Automatically scrape jobs from configured platforms</p>
+            </div>
+            <mat-slide-toggle 
+              [(ngModel)]="settings.jobScraping"
+              (change)="updateSettings()">
+            </mat-slide-toggle>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>ATS Scoring</h4>
+              <p>Automatically calculate ATS scores for new jobs</p>
+            </div>
+            <mat-slide-toggle 
+              [(ngModel)]="settings.atsScoring"
+              (change)="updateSettings()">
+            </mat-slide-toggle>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>CV Optimization</h4>
+              <p>Automatically optimize CV for high-scoring jobs</p>
+            </div>
+            <mat-slide-toggle 
+              [(ngModel)]="settings.cvOptimization"
+              (change)="updateSettings()">
+            </mat-slide-toggle>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <h4>Excel Export</h4>
+              <p>Automatically export job data to Excel</p>
+            </div>
+            <mat-slide-toggle 
+              [(ngModel)]="settings.excelExport"
+              (change)="updateSettings()">
+            </mat-slide-toggle>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

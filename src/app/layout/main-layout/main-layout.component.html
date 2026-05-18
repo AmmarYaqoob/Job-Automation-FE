@@ -1,0 +1,28 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidenav-header">
+      <h2>Job Automation</h2>
+    </div>
+    <mat-nav-list>
+      <a 
+        mat-list-item 
+        *ngFor="let item of menuItems"
+        [routerLink]="item.route"
+        [routerLinkActive]="'active'"
+        [routerLinkActiveOptions]="{exact: false}">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.label }}</span>
+      </a>
+    </mat-nav-list>
+    <div class="sidenav-footer">
+      <button mat-list-item (click)="logout()">
+        <mat-icon matListItemIcon>logout</mat-icon>
+        <span matListItemTitle>Logout</span>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

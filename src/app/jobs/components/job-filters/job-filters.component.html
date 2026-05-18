@@ -1,0 +1,61 @@
+<mat-card class="filters-card">
+  <mat-card-header>
+    <mat-card-title>Filters</mat-card-title>
+    <button mat-icon-button (click)="toggleFilters()">
+      <mat-icon>{{ showFilters ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </button>
+  </mat-card-header>
+  
+  <mat-card-content *ngIf="showFilters">
+    <form [formGroup]="filterForm" class="filters-form">
+      <div class="filters-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Platform</mat-label>
+          <mat-select formControlName="platform">
+            <mat-option value="">All Platforms</mat-option>
+            <mat-option *ngFor="let platform of platforms" [value]="platform">
+              {{ platform }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Min ATS Score</mat-label>
+          <input matInput type="number" formControlName="minAtsScore" min="0" max="100">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Max ATS Score</mat-label>
+          <input matInput type="number" formControlName="maxAtsScore" min="0" max="100">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Applied Status</mat-label>
+          <mat-select formControlName="applied">
+            <mat-option value="">All</mat-option>
+            <mat-option value="true">Applied</mat-option>
+            <mat-option value="false">Not Applied</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Date From</mat-label>
+          <input matInput [matDatepicker]="pickerFrom" formControlName="dateFrom">
+          <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFrom></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Date To</mat-label>
+          <input matInput [matDatepicker]="pickerTo" formControlName="dateTo">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="filters-actions">
+        <button mat-button (click)="clearFilters()">Clear Filters</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
