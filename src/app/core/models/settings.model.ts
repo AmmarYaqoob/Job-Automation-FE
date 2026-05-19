@@ -1,13 +1,14 @@
 export interface Settings {
   jobSearch: JobSearchSettings;
   ats: ATSSettings;
-  filePaths: FilePathSettings;
-  api: APISettings;
+  // filePaths: FilePathSettings;
+  // api: APISettings;
 }
 
 export interface JobSearchSettings {
   location: string;
-  locationKeywords?: [];
+  country: string[];
+  // locationKeywords?: [];
   roleKeywords: string[];
   platforms: string[];
   dateRange: DateRange;

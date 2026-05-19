@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
-  loading = true;
+  loading = false;
   dateRanges = Object.values(DateRange);
 
   constructor(
@@ -22,16 +22,23 @@ export class SettingsComponent implements OnInit {
   ) {
     this.settingsForm = this.fb.group({
       jobSearch: this.fb.group({
-        locationKeywords: this.fb.array([
-          this.fb.group({
-            country: [''],
-            is_paused: [false],
-            created_at: [new Date()]
-          })
+        // location: this.fb.array([
+        //   this.fb.group({
+        //     country: [''],
+        //     is_paused: [false],
+        //     created_at: [new Date()]
+        //   })
+        // ]),
+        country: this.fb.array([
+          this.fb.control('')
         ]),
-        location: [''],
-        roleKeywords: this.fb.array([]),
-        platforms: this.fb.array([]),
+        // location: [''],
+        roleKeywords: this.fb.array([
+          this.fb.control('')
+        ]),
+        platforms: this.fb.array([
+          this.fb.control('')
+        ]),
         dateRange: [DateRange.LAST_7D]
       }),
       ats: this.fb.group({
@@ -55,7 +62,6 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loading = false;
     // this.loadSettings();
   }
 
@@ -76,53 +82,56 @@ export class SettingsComponent implements OnInit {
   populateForm(settings: Settings): void {
     const jobSearch = this.settingsForm.get('jobSearch') as FormGroup;
     const roleKeywords = jobSearch.get('roleKeywords') as FormArray;
-    const locationKeywords = jobSearch.get('locationKeywords') as FormArray;
+    // const locationKeywords = jobSearch.get('locationKeywords') as FormArray;
+    const country = jobSearch.get('country') as FormArray;
     const platforms = jobSearch.get('platforms') as FormArray;
 
     // Clear existing arrays
-    while (roleKeywords.length !== 0) {
-      roleKeywords.removeAt(0);
-    }
-    while (locationKeywords.length !== 0) {
-      locationKeywords.removeAt(0);
-    }
-    while (platforms.length !== 0) {
-      platforms.removeAt(0);
-    }
-    debugger
-    // Populate role keywords
+    // while (roleKeywords.length !== 0) {
+    //   roleKeywords.removeAt(0);
+    // }
+    // while (locationKeywords.length !== 0) {
+    //   locationKeywords.removeAt(0);
+    // }
+    // while (platforms.length !== 0) {
+    //   platforms.removeAt(0);
+    // }
+    // debugger
+
+    settings.jobSearch.country.forEach(keyword => {
+      country.push(this.fb.control(keyword));
+    });
     settings.jobSearch.roleKeywords.forEach(keyword => {
       roleKeywords.push(this.fb.control(keyword));
     });
 
-    // Populate platforms
-    settings.jobSearch.platforms.forEach(platform => {
+      settings.jobSearch.platforms.forEach(platform => {
       platforms.push(this.fb.control(platform));
     });
 
-    this.settingsForm.patchValue({
-      jobSearch: {
-        location: settings.jobSearch.location,
-        dateRange: settings.jobSearch.dateRange
-      },
-      ats: settings.ats,
-      filePaths: settings.filePaths,
-      api: settings.api
-    });
+    // this.settingsForm.patchValue({
+    //   jobSearch: {
+    //     location: settings.jobSearch.location,
+    //     dateRange: settings.jobSearch.dateRange
+    //   },
+    //   ats: settings.ats,
+    //   filePaths: settings.filePaths,
+    //   api: settings.api
+    // });
 
-    settings.jobSearch.locationKeywords?.forEach((item: LocationKeyword) => {
-      locationKeywords.push(
-        this.fb.group({
-          country: [item.country],
-          is_paused: [item.is_paused],
-          created_at: [item.created_at]
-        })
-      );
-    });
+    // settings.jobSearch.locationKeywords?.forEach((item: LocationKeyword) => {
+    //   locationKeywords.push(
+    //     this.fb.group({
+    //       country: [item.country],
+    //       is_paused: [item.is_paused],
+    //       created_at: [item.created_at]
+    //     })
+    //   );
+    // });
   }
-
-  get locationKeywords(): FormArray {
-    return this.settingsForm.get('jobSearch.locationKeywords') as FormArray;
+  
+  get country(): FormArray {
+    return this.settingsForm.get('jobSearch.country') as FormArray;
   }
 
   get roleKeywords(): FormArray {
@@ -133,18 +142,12 @@ export class SettingsComponent implements OnInit {
     return this.settingsForm.get('jobSearch.platforms') as FormArray;
   }
 
-  addLocationKeyword(): void {
-    this.locationKeywords.push(
-      this.fb.group({
-        country: [''],
-        is_paused: [false],
-        created_at: [new Date()]
-      })
-    );
+  addCountry(): void {
+    this.country.push(this.fb.control(''));
   }
 
-  removeLocationKeyword(index: number): void {
-    this.locationKeywords.removeAt(index);
+  removeCountry(index: number): void {
+    this.country.removeAt(index);
   }
 
   addRoleKeyword(): void {
@@ -168,15 +171,16 @@ export class SettingsComponent implements OnInit {
     const formValue = this.settingsForm.value;
     const settings: Settings = {
       jobSearch: {
+        country: formValue.jobSearch.country,
         location: formValue.jobSearch.location,
-        locationKeywords: formValue.jobSearch.locationKeywords,
+        // locationKeywords: formValue.jobSearch.locationKeywords,
         roleKeywords: formValue.jobSearch.roleKeywords.filter((k: string) => k.trim() !== ''),
         platforms: formValue.jobSearch.platforms.filter((p: string) => p.trim() !== ''),
         dateRange: formValue.jobSearch.dateRange
       },
       ats: formValue.ats,
-      filePaths: formValue.filePaths,
-      api: formValue.api
+      // filePaths: formValue.filePaths,
+      // api: formValue.api
     };
 
     this.apiService.updateSettings(settings).subscribe({

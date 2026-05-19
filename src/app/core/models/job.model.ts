@@ -3,6 +3,7 @@ export interface Job {
   title: string;
   company: string;
   location: string;
+  country: string;
   platform: JobPlatform;
   atsScore: number;
   keywordsMatch: number;

@@ -2,10 +2,7 @@
   <div class="section-header">
     <app-page-header title="Settings"
       subtitle="Configure your job search preferences and system settings"></app-page-header>
-    <button mat-raised-button color="primary" type="submit">
-      <mat-icon>save</mat-icon>
-      Save Settings
-    </button>
+
   </div>
 
   <div *ngIf="loading" class="loading-wrapper">
@@ -20,6 +17,10 @@
 
   <div *ngIf="!loading" class="settings-content">
     <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
+      <button mat-raised-button color="primary" type="submit">
+        <mat-icon>save</mat-icon>
+        Save Settings
+      </button>
       <!-- Job Search Settings -->
       <mat-card class="settings-section">
         <!-- <mat-card-header>
@@ -35,28 +36,33 @@
               <input matInput formControlName="location">
             </mat-form-field> -->
 
+            <div class="">
+              <mat-card-title>Date Range</mat-card-title>
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="dateRange">
+                  <mat-option *ngFor="let range of dateRanges" [value]="range">
+                    {{ range }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
             <div class="form-array-section">
               <div class="section-header">
                 <mat-card-title>Countries</mat-card-title>
-                <button mat-raised-button color="primary" type="button" (click)="addLocationKeyword()">
+                <button mat-raised-button color="primary" type="button" (click)="addCountry()">
                   <mat-icon>add</mat-icon>
                   Add
                 </button>
               </div>
-
-              <div formArrayName="locationKeywords">
-                <div *ngFor="let group of locationKeywords.controls; let i = index" [formGroupName]="i"
-                  class="array-item">
-
-                  <mat-form-field appearance="outline">
-                    <input matInput formControlName="country" placeholder="Enter country">
-                  </mat-form-field>
-
-                  <button mat-icon-button type="button" (click)="removeLocationKeyword(i)">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-
-                </div>
+              <div formArrayName="country" *ngFor="let keyword of country.controls; let i = index" class="array-item">
+                <mat-form-field appearance="outline">
+                  <input matInput [formControlName]="i" placeholder="Enter keyword">
+                </mat-form-field>
+                <button mat-icon-button type="button" (click)="removeCountry(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
               </div>
             </div>
 
@@ -98,14 +104,6 @@
               </div>
             </div>
 
-            <mat-form-field appearance="outline" class="full-width">
-              <mat-label>Date Range</mat-label>
-              <mat-select formControlName="dateRange">
-                <mat-option *ngFor="let range of dateRanges" [value]="range">
-                  {{ range }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
           </div>
         </mat-card-content>
       </mat-card>
