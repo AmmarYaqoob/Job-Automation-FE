@@ -1,0 +1,201 @@
+CTRY_Name,CTRY_Code,CCY_Name,CCY_Code,Is_Active,Created_Date
+Afghanistan,AF,Afghani,AFN,1,20221121100026
+"Aland Islands",AX,Euro,EUR,1,20221121100026
+Albania,AL,Lek,ALL,1,20221121100026
+Andorra,AD,Euro,EUR,1,20221121100026
+"American Samoa",AS,"US Dollar",USD,1,20221121100026
+Angola,AO,Kwanza,AOA,1,20221121100026
+Anguilla,AI,"East Caribbean Dollar",XCD,1,20221121100026
+"Antigua And Barbuda",AG,"East Caribbean Dollar",XCD,1,20221121100026
+Argentina,AR,"Argentine Peso",ARS,1,20221121100026
+Algeria,DZ,"Algerian Dinar",DZD,1,20221121100026
+Armenia,AM,"Armenian Dram",AMD,1,20221121100026
+Aruba,AW,"Aruban Florin",AWG,1,20221121100026
+Australia,AU,"Australian Dollar",AUD,1,20221121100026
+Austria,AT,Euro,EUR,1,20221121100026
+Bahrain,BH,"Bahraini Dinar",BHD,1,20221121100026
+Bangladesh,BD,Taka,BDT,1,20221121100026
+Barbados,BB,"Barbados Dollar",BBD,1,20221121100026
+Belarus,BY,"Belarussian Ruble",BYR,1,20221121100026
+Azerbaijan,AZ,"Azerbaijanian Manat",AZN,1,20221121100026
+Bahamas,BS,"Bahamian Dollar",BSD,1,20221121100026
+Belgium,BE,Euro,EUR,1,20221121100026
+Belize,BZ,"Belize Dollar",BZD,1,20221121100026
+Benin,BJ,"CFA Franc BCEAO",XOF,1,20221121100026
+Bermuda,BM,"Bermudian Dollar",BMD,1,20221121100026
+Bhutan,BT,"Indian Rupee",INR,1,20221121100026
+Bolivia,BO,Boliviano,BOB,1,20221121100026
+"Bonaire, Sint Eustatius And Saba",BQ,"US Dollar",USD,1,20221121100026
+"Bosnia & Herzegovina",BA,"Convertible Mark",BAM,1,20221121100026
+Botswana,BW,Pula,BWP,1,20221121100026
+"Bouvet Island",BV,"Norwegian Krone",NOK,1,20221121100026
+Brazil,BR,"Brazilian Real",BRL,1,20221121100026
+"British Indian Ocean Territory",IO,"US Dollar",USD,1,20221121100026
+"British Virgin Islands",VG,"US Dollar",USD,1,20221121100026
+Brunei,BN,"Brunei Dollar",BND,1,20221121100026
+Bulgaria,BG,"Bulgarian Lev",BGN,1,20221121100026
+"Burkina Faso",BF,"CFA Franc BCEAO",XOF,1,20221121100026
+Burundi,BI,"Burundi Franc",BIF,1,20221121100026
+Cambodia,KH,Riel,KHR,1,20221121100026
+Cameroon,CM,"CFA Franc BEAC",XAF,1,20221121100026
+Canada,CA,"Canadian Dollar",CAD,1,20221121100026
+"Cayman Islands",KY,"Cayman Islands Dollar",KYD,1,20221121100026
+"Cape Verde",CV,"Cabo Verde Escudo",CVE,1,20221121100026
+"Central African Republic",CF,"CFA Franc BEAC",XAF,1,20221121100026
+Chad,TD,"CFA Franc BEAC",XAF,1,20221121100026
+Chile,CL,"Chilean Peso",CLP,1,20221121100026
+Colombia,CO,"Colombian Peso",COP,1,20221121100026
+China,CN,"Yuan Renminbi",CNY,1,20221121100026
+"Christmas Island",CX,"Australian Dollar",AUD,1,20221121100026
+"Cocos (Keeling) Islands",CC,"Australian Dollar",AUD,1,20221121100026
+Comoros,KM,"Comoro Franc",KMF,1,20221121100026
+"Cook Islands",CK,"New Zealand Dollar",NZD,1,20221121100026
+Congo,CG,"CFA Franc BEAC",XAF,1,20221121100026
+"Costa Rica",CR,"Costa Rican Colon",CRC,1,20221121100026
+"CÃ´te D'Ivoire",CI,"CFA Franc BCEAO",XOF,1,20221121100026
+Croatia,HR,"Croatian Kuna",HRK,1,20221121100026
+Cyprus,CY,Euro,EUR,1,20221121100026
+Cuba,CU,"Cuban Peso",CUP,1,20221121100026
+"Dem.Rep. Congo",CD,"Congolese Franc",CDF,1,20221121100026
+"Czech Republic",CZ,"Czech Koruna",CZK,1,20221121100026
+Curacao,CW,"Netherlands Antillean Guilder",ANG,1,20221121100026
+Denmark,DK,"Danish Krone",DKK,1,20221121100026
+Djibouti,DJ,"Djibouti Franc",DJF,1,20221121100026
+Dominica,DM,"Eastern Caribbean Dollar",XCD,1,20221121100026
+"Dominican Republic",DO,"Dominican Peso",DOP,1,20221121100026
+Ecuador,EC,"US Dollar",USD,1,20221121100026
+Estonia,EE,Euro,EUR,1,20221121100026
+"El Salvador",SV,"US Dollar",USD,1,20221121100026
+Egypt,EG,"Egyptian Pound",EGP,1,20221121100026
+"Equatorial Guinea",GQ,"CFA Franc BEAC",XAF,1,20221121100026
+Ethiopia,ET,"Ethiopian Birr",ETB,1,20221121100026
+Eritrea,ER,Nakfa,ERN,1,20221121100026
+"Falkland Islands (Malvinas)",FK,"Falkland Islands Pound",FKP,1,20221121100026
+"Faroe Islands",FO,"Danish Krone",DKK,1,20221121100026
+Fiji,FJ,"Fiji Dollar",FJD,1,20221121100026
+Finland,FI,Euro,EUR,1,20221121100026
+France,FR,Euro,EUR,1,20221121100026
+"French Polynesia",PF,"CFP Franc",XPF,1,20221121100026
+"French Guiana",GF,Euro,EUR,1,20221121100026
+"French Southern Territories",TF,Euro,EUR,1,20221121100026
+Gabon,GA,"CFA Franc BEAC",XAF,1,20221121100026
+Gambia,GM,Dalasi,GMD,1,20221121100026
+Georgia,GE,Lari,GEL,1,20221121100026
+Germany,DE,Euro,EUR,1,20221121100026
+Ghana,GH,"Ghana Cedi",GHS,1,20221116101944
+Gibraltar,GI,"Gibraltar Pound",GIP,1,20221116101944
+Greenland,GL,"Danish Krone",DKK,1,20221116101944
+Greece,GR,Euro,EUR,1,20221116101944
+Grenada,GD,"East Caribbean Dollar",XCD,1,20221116101944
+Guadeloupe,GP,Euro,EUR,1,20221116101944
+Guatemala,GT,Quetzal,GTQ,1,20221116101944
+Guernsey,GG,"Pound Sterling",GBP,1,20221116101944
+Guinea,GN,"Guinea Franc",GNF,1,20221116101944
+Guinea-Bissau,GW,"CFA Franc BCEAO",XOF,1,20221116101944
+Guyana,GY,"Guyana Dollar",GYD,1,20221116101944
+Haiti,HT,"US Dollar",USD,1,20221116101944
+"Holy See (Vatican City State)",VA,Euro,EUR,1,20221116101944
+"Heard Island And Mcdonald Islands",HM,"Australian Dollar",AUD,1,20221116101944
+Honduras,HN,Lempira,HNL,1,20221116101944
+"Hong Kong",HK,"Hong Kong Dollar",HKD,1,20221116101944
+Hungary,HU,Forint,HUF,1,20221116101944
+Iceland,IS,"Iceland Krona",ISK,1,20221121095730
+India,IN,"Indian Rupee",INR,1,20221121095730
+Iran,IR,"Iranian Rial",IRR,1,20221121095730
+Iraq,IQ,"Iraqi Dinar",IQD,1,20221121095730
+Indonesia,ID,Rupiah,IDR,1,20221121095730
+Ireland,IE,Euro,EUR,1,20221121095730
+"Isle of Man",IM,"Pound Sterling",GBP,1,20221121095730
+Israel,IL,"New Israeli Sheqel",ILS,1,20221121095730
+Italy,IT,Euro,EUR,1,20221121095730
+Jamaica,JM,"Jamaican Dollar",JMD,1,20221121095730
+Japan,JP,Yen,JPY,1,20221121095730
+Jersey,JE,"Pound Sterling",GBP,1,20221121100026
+Jordan,JO,"Jordanian Dinar",JOD,1,20221121100026
+Kazakhstan,KZ,Tenge,KZT,1,20221121095730
+Kenya,KE,"Kenyan Shilling",KES,1,20221121095730
+Kiribati,KI,"Australian Dollar",AUD,1,20221121100026
+Kyrgyzstan,KG,Som,KGS,1,20221121100026
+Kuwait,KW,"Kuwaiti Dinar",KWD,1,20221121095730
+"Lao People'S Democratic Republic",LA,Kip,LAK,1,20221121095730
+Latvia,LV,Euro,EUR,1,20221121095730
+Lebanon,LB,"Lebanese Pound",LBP,1,20221121095730
+Liberia,LR,"Liberian Dollar",LRD,1,20221121095730
+Lesotho,LS,Rand,ZAR,1,20221121100026
+Libya,LY,"Libyan Dinar",LYD,1,20221121100026
+Liechtenstein,LI,"Swiss Franc",CHF,1,20221121095730
+Lithuania,LT,Euro,EUR,1,20221121100026
+Luxembourg,LU,Euro,EUR,1,20221121100026
+Macau,MO,Pataca,MOP,1,20221121100026
+Madagascar,MG,"Malagasy Ariary",MGA,1,20221121100026
+Malawi,MW,Kwacha,MWK,1,20221121100026
+Malaysia,MY,"Malaysian Ringgit",MYR,1,20221121100026
+Maldives,MV,Rufiyaa,MVR,1,20221121100026
+Malta,MT,Euro,EUR,1,20221121100026
+Mali,ML,"CFA Franc BCEAO",XOF,1,20221121100026
+"Marshall Islands",MH,"US Dollar",USD,1,20221121100026
+Martinique,MQ,Euro,EUR,1,20221121100026
+Mauritania,MR,Ouguiya,MRO,1,20221121100026
+Mauritius,MU,"Mauritius Rupee",MUR,1,20221121100026
+"Micronesia, Federated States Of",FM,"US Dollar",USD,1,20221121100026
+Mayotte,YT,Euro,EUR,1,20221121100026
+Mexico,MX,"Mexican Peso",MXN,1,20221121100026
+Moldova,MD,"Moldovan Leu",MDL,1,20221121100026
+Morocco,MA,"Moroccan Dirham",MAD,1,20221121100026
+Monaco,MC,Euro,EUR,1,20221121100026
+Montserrat,MS,"East Caribbean Dollar",XCD,1,20221121100026
+Mongolia,MN,Tugrik,MNT,1,20221121100026
+Montenegro,ME,Euro,EUR,1,20221121100026
+Mozambique,MZ,"Mozambique Metical",MZN,1,20221121100026
+Myanmar,MM,Kyat,MMK,1,20221121100026
+Namibia,NA,Rand,ZAR,1,20221121100026
+Nauru,NR,"Australian Dollar",AUD,1,20221121100026
+Nepal,NP,"Nepalese Rupee",NPR,1,20221121100026
+"Neth. Antilles",AN,Euro,EUR,1,20221121100026
+Netherlands,NL,Euro,EUR,1,20221121100026
+"New Caledonia",NC,"CFP Franc",XPF,1,20221121100026
+"New Zealand",NZ,"New Zealand Dollar",NZD,1,20221121100026
+Nicaragua,NI,"Cordoba Oro",NIO,1,20221121100026
+Niger,NE,"CFA Franc BCEAO",XOF,1,20221121100026
+Nigeria,NG,Naira,NGN,1,20221121100026
+Niue,NU,"New Zealand Dollar",NZD,1,20221121100026
+"Norfolk Island",NF,"Australian Dollar",AUD,1,20221121100026
+"North Macedonia",MK,Denar,MKD,1,20221121100026
+"Northern Mariana Islands",MP,"US Dollar",USD,1,20221121100026
+Norway,NO,"Norwegian Krone",NOK,1,20221121100026
+Oman,OM,"Rial Omani",OMR,1,20221121100026
+Palau,PW,"US Dollar",USD,1,20221121100026
+Pakistan,PK,"Pakistan Rupee",PKR,1,20221121100026
+Panama,PA,"US Dollar",USD,1,20221121100026
+"Papua New Guinea",PG,Kina,PGK,1,20221121100026
+Peru,PE,"Nuevo Sol",PEN,1,20221121100026
+Paraguay,PY,Guarani,PYG,1,20221121100026
+Philippines,PH,"Philippine Peso",PHP,1,20221121100026
+Pitcairn,PN,"New Zealand Dollar",NZD,1,20221121100026
+Poland,PL,Zloty,PLN,1,20221121100026
+Portugal,PT,Euro,EUR,1,20221121100026
+"Puerto Rico",PR,"US Dollar",USD,1,20221121100026
+Qatar,QA,"Qatari Rial",QAR,1,20221121100026
+Reunion,RE,Euro,EUR,1,20221121100026
+Romania,RO,"Romanian Leu",RON,1,20221121100026
+Russia,RU,"Russian Ruble",RUB,1,20221121100026
+Rwanda,RW,"Rwanda Franc",RWF,1,20221121100026
+"Saint BarthÃ©lemy",BL,Euro,EUR,1,20221121100026
+"Saint Helena, Ascension And Tristan Da Cunha",SH,"Saint Helena Pound",SHP,1,20221121100026
+"Saint Lucia",LC,"East Caribbean Dollar",XCD,1,20221121100026
+"Saint Martin (French Part)",MF,Euro,EUR,1,20221121100026
+"Saint Pierre And Miquelon",PM,Euro,EUR,1,20221121100026
+"San Marino",SM,Euro,EUR,1,20221121100026
+Samoa,WS,Tala,WST,1,20221121100026
+"Sao Tome And Principe",ST,Dobra,STN,1,20221121100026
+"Saudi Arabia",SA,"Saudi Riyal",SAR,1,20221121100026
+Senegal,SN,"CFA Franc BCEAO",XOF,1,20221121100026
+Serbia,RS,"Serbian Dinar",RSD,1,20221121100026
+"Sierra Leone",SL,Leone,SLL,1,20221121100026
+Seychelles,SC,"Seychelles Rupee",SCR,1,20221121100026
+Singapore,SG,"Singapore Dollar",SGD,1,20221121100026
+Slovakia,SK,Euro,EUR,1,20221121100026
+"Sint Maarten (Dutch Part)",SX,"Netherlands Antillean Guilder",ANG,1,20221121100026
+"Solomon Islands",SB,"Solomon Islands Dollar",SBD,1,20221121100026
+Slovenia,SI,Euro,EUR,1,20221121100026
+Somalia,SO,"Somali Shilling",SOS,1,20221121100026
