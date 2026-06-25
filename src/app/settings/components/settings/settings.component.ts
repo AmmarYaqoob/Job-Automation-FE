@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ApiService } from '../../../core/services/api.service';
 import { Settings, DateRange, LocationKeyword } from '../../../core/models/settings.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SearchConfigModal } from '../../search-config-modal/search-config-modal';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings',
@@ -14,11 +16,26 @@ export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
   loading = false;
   dateRanges = Object.values(DateRange);
+  searchConfigurations: any[] = [
+    {
+      dateRange: 'Last 7 Days',
+      countries: ['Germany', 'Netherlands'],
+      roles: ['Backend Engineer', 'Node.js Developer'],
+      platforms: ['LinkedIn', 'Stepstone']
+    },
+    {
+      dateRange: 'Last 24 Hours',
+      countries: ['Germany'],
+      roles: ['Software Engineer'],
+      platforms: ['LinkedIn']
+    }
+  ];
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this.settingsForm = this.fb.group({
       jobSearch: this.fb.group({
@@ -105,7 +122,7 @@ export class SettingsComponent implements OnInit {
       roleKeywords.push(this.fb.control(keyword));
     });
 
-      settings.jobSearch.platforms.forEach(platform => {
+    settings.jobSearch.platforms.forEach(platform => {
       platforms.push(this.fb.control(platform));
     });
 
@@ -129,7 +146,7 @@ export class SettingsComponent implements OnInit {
     //   );
     // });
   }
-  
+
   get country(): FormArray {
     return this.settingsForm.get('jobSearch.country') as FormArray;
   }
@@ -193,4 +210,18 @@ export class SettingsComponent implements OnInit {
       }
     });
   }
+
+
+  openSearchConfigModal(): void {
+    const dialogRef = this.dialog.open(SearchConfigModal, {
+      width: '800px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.searchConfigurations.push(result);
+      }
+    });
+  }
+
 }
