@@ -9,6 +9,61 @@
     <app-loading-spinner></app-loading-spinner>
   </div>
 
+  <div class="settings-content">
+    <mat-card class="settings-section">
+      <div *ngFor="let item of settingsList; let i = index" class="settings-row">
+        <mat-card class="settings-section">
+          <mat-card-content>
+            <div class="row-header">
+              <div>
+                <div class="title">Configuration {{ i + 1 }}</div>
+                <div class="subtitle">{{ item.dateRange }}</div>
+              </div>
+              <div class="row-body">
+                <div class="row-block">
+                  <div class="label">Countries</div>
+                  <div class="chips">
+                    <span class="chip" *ngFor="let c of item.countries">
+                      {{ c }}
+                    </span>
+                  </div>
+                </div>
+                <div class="row-block">
+                  <div class="label">Roles</div>
+                  <div class="chips">
+                    <span class="chip" *ngFor="let r of item.roles">
+                      {{ r }}
+                    </span>
+                  </div>
+                </div>
+                <div class="row-block">
+                  <div class="label">Platforms</div>
+                  <div class="chips">
+                    <span class="chip" *ngFor="let p of item.platforms">
+                      {{ p }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="actions">
+                <button mat-icon-button color="primary" (click)="editItem(i)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn" (click)="deleteItem(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <button mat-raised-button color="primary" (click)="openSearchConfigModal()">
+        <mat-icon>add</mat-icon>
+        Add Search Configuration
+      </button>
+    </mat-card>
+  </div>
 
   <!-- <div *ngIf="!loading" class="settings-content">
     <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
@@ -117,10 +172,3 @@
     </form>
   </div> -->
 </div>
-
-
-<button mat-raised-button color="primary" (click)="openSearchConfigModal()">
-  <mat-icon>add</mat-icon>
-  Add Search Configuration
-</button>
-

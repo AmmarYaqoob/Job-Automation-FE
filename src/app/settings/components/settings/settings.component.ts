@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ApiService } from '../../../core/services/api.service';
 import { Settings, DateRange, LocationKeyword } from '../../../core/models/settings.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SearchConfigModal } from '../../search-config-modal/search-config-modal';
+import { SearchConfigModalComponent } from '../../search-config-modal/search-config-modal';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -16,12 +16,12 @@ export class SettingsComponent implements OnInit {
   settingsForm: FormGroup;
   loading = false;
   dateRanges = Object.values(DateRange);
-  searchConfigurations: any[] = [
+  settingsList: any[] = [
     {
       dateRange: 'Last 7 Days',
-      countries: ['Germany', 'Netherlands'],
-      roles: ['Backend Engineer', 'Node.js Developer'],
-      platforms: ['LinkedIn', 'Stepstone']
+      countries: ['Germany'],
+      roles: ['Backend Engineer'],
+      platforms: ['LinkedIn']
     },
     {
       dateRange: 'Last 24 Hours',
@@ -211,15 +211,25 @@ export class SettingsComponent implements OnInit {
     });
   }
 
+  editItem(index: number): void {
+    const item = this.settingsList[index];
+    console.log('Edit:', item);
+
+    // open modal or patch form here
+  }
+
+  deleteItem(index: number): void {
+    this.settingsList.splice(index, 1);
+  }
 
   openSearchConfigModal(): void {
-    const dialogRef = this.dialog.open(SearchConfigModal, {
+    const dialogRef = this.dialog.open(SearchConfigModalComponent, {
       width: '800px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.searchConfigurations.push(result);
+        this.settingsList.push(result);
       }
     });
   }

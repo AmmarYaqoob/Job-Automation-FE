@@ -3,14 +3,15 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ApiService } from '../../core/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Settings, DateRange } from '../../core/models/settings.model';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-search-config-modal',
-  imports: [],
   templateUrl: './search-config-modal.html',
   styleUrl: './search-config-modal.scss',
+  standalone: false
 })
-export class SearchConfigModal {
+export class SearchConfigModalComponent {
   settingsForm: FormGroup;
   loading = false;
   dateRanges = Object.values(DateRange);
@@ -19,7 +20,8 @@ export class SearchConfigModal {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialogRef<SearchConfigModalComponent>
   ) {
     this.settingsForm = this.fb.group({
       jobSearch: this.fb.group({
@@ -61,6 +63,9 @@ export class SearchConfigModal {
       })
     });
 
+  }
+  closeModal() {
+    this.dialog.close();
   }
 
   get country(): FormArray {

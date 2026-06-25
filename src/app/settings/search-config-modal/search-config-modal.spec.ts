@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchConfigModal } from './search-config-modal';
+import { SearchConfigModalComponent } from './search-config-modal';
 
-describe('SearchConfigModal', () => {
-  let component: SearchConfigModal;
-  let fixture: ComponentFixture<SearchConfigModal>;
+describe('SearchConfigModalComponent', () => {
+  let component: SearchConfigModalComponent;
+  let fixture: ComponentFixture<SearchConfigModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchConfigModal]
+      imports: [SearchConfigModalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SearchConfigModal);
+    fixture = TestBed.createComponent(SearchConfigModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
